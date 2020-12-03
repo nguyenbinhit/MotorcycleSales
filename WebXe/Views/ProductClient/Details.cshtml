@@ -1,0 +1,417 @@
+﻿@model Models.EF.Product
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_LayoutPro.cshtml";
+}
+
+@{
+    var session = (WebXe.Common.UserLogin)Session[WebXe.Common.CommonConstants.USER_SESSION];
+}
+
+
+<!--product detail page-->
+<div class="bg-1" style="background-color: #ffffff">
+    <div class="container" style="padding: 0px 0px">
+        <div class="row">
+            <h3 class="text-center product-h3" style="color: red;"> CHI TIẾT SẢN PHẨM </h3>
+            <p class="car-p-img">
+                <img src="~/Assets/Client/images/moto/di.png" alt="crossbar">
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="bg-1">
+    <div class="container" style="padding: 0px 0px">
+        <ul class="nav nav-tabs">
+            <!--List Menu-->
+            <li class="active"><a href="/san-pham" class="car-li-a">Tất cả</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle car-li-a" data-toggle="dropdown" href="#">Màu xe<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    @foreach (var item in ViewBag.CL)
+                    {
+                        <li><a href="/mau-sac-xe/@item.id" style="font-size: 12pt;">@item.name</a></li>
+                    }
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle car-li-a" data-toggle="dropdown" href="#">Hãng xe<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    @foreach (var item in ViewBag.HX)
+                    {
+                        <li><a href="/hang-xe/@item.id" style="font-size: 12pt;">@item.name</a></li>
+                    }
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle car-li-a" data-toggle="dropdown" href="#">Thể loại xe<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    @foreach (var item in ViewBag.TL)
+                    {
+                        <li><a href="/the-loai-xe/@item.id" style="font-size: 12pt;">@item.name</a></li>
+                    }
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--product details-->
+<div id="wrapper">
+    <div id="maincontent">
+        <div class="container" style="padding: 0px 0px">
+            <div class="col-md-12 product-12">
+                <section class="box-main1">
+                    <!--image product-->
+                    <div class="col-md-7 text-center" style="margin-top: 35px;">
+                        <img src="@Html.DisplayFor(model => model.imagemain)" class="img-responsive product-img" id="imgmain" height="350" data-zoom-image="images/16-270x270.png">
+                    </div>
+                    <!--product code price name-->
+                    <div class="col-md-5 bor product-name-5">
+                        <ul id="right">
+                            <!--Name product-->
+                            <li>
+                                <h3 class="product-name" style="font-size: 18pt;">
+                                    @Html.DisplayFor(model => model.CarManufacturer.name)<br /> @Html.DisplayFor(model => model.name)
+                                </h3>
+                            </li>
+                            <li>
+                                <div id="product-div0"></div>
+                            </li>
+                            <!--Price Product-->
+                            @if (Model.sale != null)
+                            {
+                                <li class="product-li">
+                                    <p>
+                                        <strike class="sale" style="font-size: 15pt;">
+                                            Giá gốc: @Html.DisplayFor(model => model.price)
+                                        </strike>
+                                    </p>
+                                    <p>
+                                        <b class="price" style="font-size: 15pt;">Giá giảm: @Html.DisplayFor(model => model.sale)</b>
+                                    </p>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="product-li">
+                                    <p>
+                                        <b class="price" style="font-size: 15pt;">Giá bán: @Model.price.ToString("C")</b>
+                                    </p>
+                                </li>
+                            }
+                            <!--The number of products-->
+                            <li class="product-li">
+                                <p id="pro-number-p">
+                                    Còn hàng
+                                    <span id="pro-number-span">
+                                        (Xem danh sách Showroom)
+                                    </span>
+                                </p>
+                            </li>
+                            <!--Product code-->
+                            <li>
+                                <p id="pro-code-p">
+                                    Mã SP:
+                                    <span id="pro-code-span">
+                                        @Html.DisplayFor(model => model.id)
+                                    </span>
+                                </p>
+                            </li>
+                            <!--add product to cart-->
+                            <li>
+                                <a href="~/CartClient/AddItem?product_ID=@Model.id&qty=1" class="btn btn-default" id="pro-cart-a" style="border-radius: 5px">
+                                    <i class="fa fa-shopping-basket"></i>
+                                    Thêm vào giỏ hàng
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--Other pictures of the product-->
+                    @if (Model.imagechild1 == null && Model.imagechild2 == null && Model.imagechild3 == null)
+                    {
+                        <!--The product has no other pictures to display-->
+                    }
+                    else
+                    {
+                        <div class="col-md-5 text-center" id="pro-pic-5">
+                            @if (Model.imagechild1 != null)
+                            {
+                                <div class="col-md-4 text-center bor clearfix pro-pic-4" id="imgdetail">
+                                    <img src="@Html.DisplayFor(model => model.imagechild1)" class="img-responsive pull-left" width="110" onclick="changeImage('two')" id="two">
+                                </div>
+                            }
+                            @if (Model.imagechild2 != null)
+                            {
+                                <div class="col-md-4 text-center bor clearfix pro-pic-4" id="imgdetail">
+                                    <img src="@Html.DisplayFor(model => model.imagechild2)" class="img-responsive pull-left" width="110" onclick="changeImage('three')" id="three">
+                                </div>
+                            }
+                            @if (Model.imagechild3 != null)
+                            {
+                                <div class=" col-md-4 text-center bor clearfix pro-pic-4" id="imgdetail">
+                                    <img src="@Html.DisplayFor(model => model.imagechild3)" class="img-responsive pull-left" width="110" onclick="changeImage('four')" id="four">
+                                </div>
+                            }
+                            <div class=" col-md-4 text-center bor clearfix pro-imagemain-4" id="imgdetail">
+                                <img src="@Html.DisplayFor(model => model.imagemain)" class="img-responsive pull-left" width="110" onclick="changeImage('one')" id="one">
+                            </div>
+                        </div>
+                    }
+                    <script src="~/Assets/Client/js/jsimg/img.js"></script>
+                </section>
+
+                <!--product information and reviews-->
+                <div class="col-md-12" id="tabdetail" style="border-bottom:1px solid #e5e5e5;">
+                    <div class="row" style="margin-top: 45px;">
+                        <!--Menu-->
+                        <ul class="nav nav-tabs">
+                            <!--product information-->
+                            <li class="active">
+                                <a data-toggle="tab" href="#home" id="product-li-a1">Thông tin xe </a>
+                            </li>
+
+                            <!--product reviews-->
+                            <li>
+                                <a data-toggle="tab" href="#menu1" id="product-li-a1"> Đánh giá </a>
+                            </li>
+                        </ul>
+                        <br />
+
+                        <div class="tab-content">
+                            <!--specifications of the product-->
+                            <div id="home" class="tab-pane fade in active">
+                                <p id="specifications">THÔNG SỐ KỸ THUẬT:</p><br />
+                                @Html.Raw(Model.information)
+                            </div>
+                            <!--reviews and product reviews-->
+                            <div id="menu1" class="tab-pane fade ">
+                                @if (session == null)
+                                {
+                                    <div>
+                                        <label for="comment" style="font-size: 15pt;">Các bài đánh giá mới nhất:</label>
+                                        <!--list of reviews product comments-->
+                                        <div class="container-comment">
+                                            <div class="comment-content">
+                                                @foreach (var item in ViewBag.Feedback)
+                                                {
+                                                    <div id="comment" style="padding-top:8px;">
+                                                        <i class="fa fa-user-circle pro-user"></i>
+                                                        <p class="pro-user-p">
+                                                            @item.User_Name
+                                                            <!--number of reviews-->
+                                                            <span style="margin-left:5px">
+                                                                @if (item.Star == 1)
+                                                                {
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                }
+                                                                else if (item.Star == 2)
+                                                                {
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                }
+                                                                else if (item.Star == 3)
+                                                                {
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                }
+                                                                else if (item.Star == 4)
+                                                                {
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                }
+                                                            </span>
+                                                        </p>
+                                                        <p style="font-size: 12pt;">@item.Note</p>
+                                                        @*<p class="fa fa-clock-o" style="color: #999999;"> <?php echo $item['created_at'] ?></p>*@
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div>
+                                        <!--Review product reviews-->
+                                        <label for="comment" style="font-size: 15pt;">Đánh giá bình luận sản phẩm:</label>
+                                        <div>
+                                            <!--from reviews-->
+                                            @using (Html.BeginForm("Create", "ProductClient", FormMethod.Post))
+                                            {
+                                                if (ViewBag.Success != null)
+                                                {
+                                                    <div class="alert alert-success">@ViewBag.Success</div>
+                                                }
+
+                                                <input type="hidden" value="@Model.id" name="Product_ID">
+                                                <input type="hidden" value="@session.UserID" name="User_ID">
+                                                <!--number of stars-->
+                                                <div class="stars">
+                                                    <input class="star star-5" id="star-5" value="5" type="radio" name="Star" />
+                                                    <label class="star star-5" for="star-5" title="Tuyệt vời"></label>
+
+                                                    <input class="star star-4" id="star-4" value="4" type="radio" name="Star" />
+                                                    <label class="star star-4" for="star-4" title="Tốt"></label>
+
+                                                    <input class="star star-3" id="star-3" value="3" type="radio" name="Star" />
+                                                    <label class="star star-3" for="star-3" title="Tạm"></label>
+
+                                                    <input class="star star-2" id="star-2" value="2" type="radio" name="Star" />
+                                                    <label class="star star-2" for="star-2" title="Khá"></label>
+
+                                                    <input class="star star-1" id="star-1" value="1" type="radio" name="Star" />
+                                                    <label class="star star-1" for="star-1" title="Tệ"></label>
+                                                </div>
+                                                <!--comment-->
+                                                <textarea maxlength="250" name="Note" id="inpBinhLuan" placeholder="Viết suy nghĩ của bạn về sản phẩm vào đây..."></textarea>
+                                                <input id="btnBinhLuan" type="submit" value="GỬI BÌNH LUẬN">
+                                            }
+                                        </div>
+                                    </div>
+                                    <br><br><br>
+                                    <div>
+                                        <label for="comment" style="font-size: 15pt;">Các bài đánh giá mới nhất:</label>
+                                        <!--list of reviews product comments-->
+                                        <div class="container-comment">
+                                            <div class="comment-content">
+                                                @foreach (var item in ViewBag.Feedback)
+                                                {
+                                                    <div id="comment" style="padding-top:8px;">
+                                                        <i class="fa fa-user-circle pro-user"></i>
+                                                        <p class="pro-user-p">
+                                                            @item.User_Name
+                                                            <!--number of reviews-->
+                                                            <span style="margin-left:5px">
+                                                                @if (item.Star == 1)
+                                                                {
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                }
+                                                                else if (item.Star == 2)
+                                                                {
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                }
+                                                                else if (item.Star == 3)
+                                                                {
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                }
+                                                                else if (item.Star == 4)
+                                                                {
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star-o pro-ii"></i>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                    <i class="fa fa-star pro-i"></i>
+                                                                }
+                                                            </span>
+                                                        </p>
+                                                        <p style="font-size: 12pt;">@item.Note</p>
+                                                        @*<p class="fa fa-clock-o" style="color: #999999;"> <?php echo $item['created_at'] ?></p>*@
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--related products-->
+                <div class="col-md-12" style="padding-bottom: 15px;">
+                    <br />
+                    <h3 id="pro-other-h3">Sản phẩm khác</h3>
+                    <section class="box-main1">
+                        <div class="showitem" style="margin-top: 20px;">
+                            @foreach (var item in ViewBag.Pr)
+                            {
+                                <div class="col-md-3 item-product" style="width:24%; margin-left: 10px">
+                                    <a href="/chi-tiet-san-pham/@item.id">
+                                        <img src="@item.imagemain" class="imagemain">
+                                    </a>
+                                    <div class="info-item">
+                                        <a href="#">@item.name</a>
+                                        @if (item.sale != null)
+                                        {
+                                            <p>
+                                                <strike class="sale" style="font-size: 10pt;">
+                                                    @item.price.ToString("C")
+                                                </strike>
+                                                <b class="price" style="font-size: 10pt">
+                                                    @item.sale
+                                                </b>
+                                            </p>
+                                            <br>
+                                        }
+                                        else
+                                        {
+                                            <p>
+                                                <b class="price" style="font-size: 10pt">@item.price.ToString("C")</b>
+                                            </p>
+                                            <br>
+                                        }
+                                    </div>
+                                    <div class="hidenitem">
+                                        <p><a href="/chi-tiet-san-pham/@item.id"><i class="fa fa-search"></i></a></p>
+                                        <p><a href="~/CartClient/AddItem?product_ID=@item.id&qty=1"><i class="fa fa-shopping-basket"></i></a></p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <a class="btnn btn-danger text-center" href="~/ProductClient/Index"> Xem thêm </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var session = (WebXe.Common.UserLogin)Session[WebXe.Common.CommonConstants.USER_SESSION];
+}
+
+
+<!--Title-->
+<div class="bg-1" style="background-color: #fdf5e6;">
+    <div class="container" style="padding: 50px 0px 20px 0px">
+        <div class="row">
+            <h3 class="user-title text-center" style="color: red;"> THÔNG TIN TÀI KHOẢN </h3>
+            <p class="user-p-img">
+                <img src="~/Assets/Client/images/moto/di.png" alt="crossbar">
+            </p>
+        </div>
+    </div>
+</div>
+
+<!--customer account information-->
+<div class="bg-1" style="background-color: #ffffff;">
+    <div class="container" style="width: 1400px">
+        <!--Menu-->
+        <div class="col-sm-2 fixside well user-2">
+            <!--hello user-->
+            <div class="well text-center" style="background-color: #ffffff;">
+                <p class="user-hello-p1" style="color: #337ab7;">Xin chào !!!</p>
+                @if (session.UserImage != null)
+                {
+                    <img src="@session.UserImage" class="img-circle" height="70" width="75" alt="Avatar">
+                }
+                <p class="user-hello-p2" style="color: #337ab7;">@session.UserName</p>
+            </div>
+
+            <!--Personal information-->
+            <div class="well text-center" style="background-color: #ffffff;">
+                <a href="/khach-hang/@session.UserID">
+                    <span class="glyphicon glyphicon-user user-span"></span>
+                    <p class="user-p">Thông tin cá nhân</p>
+                </a>
+            </div>
+
+            <!--your order-->
+            <div class="well text-center" style="background-color: #ffffff;">
+                <a href="/don-hang/@session.UserID">
+                    <span class="glyphicon glyphicon-shopping-cart user-span"></span>
+                    <p class="user-p">Đơn hàng của bạn</p>
+                </a>
+            </div>
+        </div>
+
+        <!--detailed list of your order-->
+        <div class="col-md-9 user-order-detail-9">
+            <section class="box-main1">
+                <h3 class="title-main user-order-detail-h3">
+                    <a href="#" style="font-size: 18pt;"> Chi tiết đơn hàng của bạn </a>
+                </h3>
+            </section>
+        </div><br>
+
+        <div class="col-md-9 bor user-9">
+            <section class="box-main1">
+                <h3 class="title-main user-order-h3" >
+                    <a href="#" style="font-size: 15pt;"> Thông tin về bạn </a>
+                </h3>
+                <table class="table table-hover" id="shoppingcart_info" style="color:#2c2c2c">
+                    <thead>
+                        <tr>
+                            <th class="user-th">Họ tên</th>
+                            <th class="user-th">Số điện thoại</th>
+                            <th class="user-th">Trạng thái</th>
+                            <th class="user-th">Tổng số tiền</th>
+                            <th class="user-th">Địa chỉ</th>
+                            <th class="user-th">Ngày mua</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Order)
+                        {
+                            <tr>
+                                <td class="user-td">@item.User.displayname</td>
+                                <td class="user-td">@item.User.phone</td>
+                                @if (item.status == 1)
+                                {
+                                    <td class="user-td">Đã xử lý</td>
+                                }
+                                else
+                                {
+                                    <td class="user-td">Chờ xử lý</td>
+                                }
+                                <td class="user-td">@item.amount.ToString("C")</td>
+                                <td class="user-td">@item.User.address</td>
+                                <td class="user-td">@item.date_created</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br>
+                <p class="user-orderdetail-p" style="color:#2c2c2c">Lưu ý: Đơn hàng đã tính thuế VAT</p>
+            </section>
+        </div><br>
+
+        <div class="col-md-9 bor user-9" >
+            <section class="box-main1">
+                <h3 class="title-main user-order-h3" >
+                    <a href="#" style="font-size: 15pt;"> Các sản phẩm đặt mua: </a>
+                </h3>
+                <table class="table table-hover" id="shoppingcart_info" style="color:#2c2c2c">
+                    <thead>
+                        <tr>
+                            <th class="user-th">Mã ĐH</th>
+                            <th class="user-th">Tên sản phẩm </th>
+                            <th class="user-th">Hình ảnh</th>
+                            <th class="user-th">Giá sản phẩm</th>
+                            <th class="user-th">Số lượng</th>
+                            <th class="user-th">Chi tiết sản phẩm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Product)
+                        {
+                            <tr>
+                                <td style="padding-top: 40px;padding-left: 15px;">@item.BillID</td>
+                                <td style="padding-top: 40px;">@item.ProductName</td>
+                                <td style="padding-top: 40px;">@item.Price.ToString("C")</td>
+                                <td style="padding-top: 40px; padding-left: 30px;">@item.Qty chiếc</td>
+                                <td>
+                                    <img src="@item.ProductImage" width="120" height="85" alt="ProductImg">
+                                </td>
+                                <td style="padding-top: 38px;">
+                                    <a class="btn btn-xs btn-info" href="/chi-tiet-san-pham/@item.ProductID"> 
+                                        <i class="fa fa-search"></i> Xem sản phẩm 
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .btn-xs,
+    .btn-group-xs > .btn {
+        padding: 1px 5px;
+        font-size: 12px;
+        line-height: 1.7;
+        border-radius: 3px;
+    }
+
+    .btn-info {
+        color: #fff;
+        background-color: #5bc0de;
+        border-color: #46b8da;
+    }
+</style>

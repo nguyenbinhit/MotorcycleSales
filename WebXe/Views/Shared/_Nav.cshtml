@@ -1,0 +1,72 @@
+﻿<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid" style="background-color: #191919;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- Thanh ngang header -->
+            <a class="navbar-brand header-logo" href="/trang-chu" style="color: red;"> MOTORCYCLE </a>
+            <!--Menu-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/trang-chu">Trang chủ </a></li>
+                <li><a href="/gioi-thieu">Giới thiệu</a></li>
+                <li><a href="/san-pham">Sản phẩm</a></li>
+                <li><a href="/tin-tuc">Tin tức</a></li>
+                <li><a href="/lien-he">Liên hệ</a></li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <!--Menu-->
+            <ul class="nav navbar-nav navbar-right">
+                @{
+                    var session = (WebXe.Common.UserLogin)Session[WebXe.Common.CommonConstants.USER_SESSION];
+                }
+                @if (session == null)
+                {
+                    <li class="dropdown">
+                        <a href="/dang-ky-dang-nhap" style="font-weight: bold; letter-spacing: 1px; font-size: 11pt; font-family: Myriad Pro;">
+                            <i class="fa fa-unlock-alt header-icons"></i> Đăng nhập / 
+                            <i class="fa fa-user-plus header-icons"></i> Đăng ký 
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="dropdown">
+                        <a href="/khach-hang/@session.UserID" style="font-weight: bold; letter-spacing: 1px; font-size: 11pt; font-family: Myriad Pro;">
+                            <span class="glyphicon glyphicon-user header-icons"></span> 
+                            @session.UserName 
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/dang-xuat" style="font-weight: bold; letter-spacing: 1px; font-size: 11pt; font-family: Myriad Pro;">
+                            <i class="fa fa-sign-out header-icons"></i> Đăng xuất 
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/gio-hang" style="font-weight: bold; letter-spacing: 1px; font-size: 11pt; font-family: Myriad Pro;">
+                            <span class="glyphicon glyphicon-shopping-cart header-icons"></span> 
+                            Giỏ hàng
+                        </a>
+                    </li>
+                }
+                <!--Search-->
+                <li class="dropdown">
+                    @using (Html.BeginForm("Index", "ProductClient", FormMethod.Get, new { @class = "navbar-form nav navbar-nav navbar-right" }))
+                    {
+                        <div class="form-group input-group" style="margin-right: 15px;">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" style="width:100px">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit" value="@ViewBag.Search">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    }
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

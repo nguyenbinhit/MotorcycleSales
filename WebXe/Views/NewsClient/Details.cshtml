@@ -1,0 +1,39 @@
+﻿@model Models.EF.News
+
+@{
+    ViewBag.Title = "Nội dung tin tức";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!--news content headlines-->
+<div class="bg-1" style="background-color: #fdf5e6;">
+    <div class="container" style="padding: 80px 0px 40px 0px;">
+        <div class="row text-center">
+            <h3 class="content-new-h3 text-center" style="color: red;"> NỘI DUNG TIN TỨC </h3>
+            <p> <img src="~/Assets/Client/images/moto/di.png" /></p>
+        </div>
+    </div>
+</div>
+
+<!--news content-->
+<div class="bg-1 content-new">
+    <div class="container" style="padding: 30px 30px">
+        <h3 class="content-main-new-h3 text-center" style="color: red;"> @Html.DisplayFor(model => model.name)</h3><br>
+        @if (Model.thunbar != null)
+        {
+            <p class="text-center">
+                <img src="@Html.DisplayFor(model => model.thunbar)" alt="Image" width="650" height="300">
+            </p>
+            <br /><br />
+        }
+        @Html.Raw(Model.content)
+    </div>
+</div>
+
+<style type="text/css">
+    .bg-1 p {
+        font-style: normal;
+    }
+</style>
+

@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Tin tức";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model PagedList.IPagedList<Models.EF.News>
+@using PagedList;
+@using PagedList.Mvc;
+
+
+<!--news page title-->
+<div class="bg-1" style="background-color: #fdf5e6;">
+    <div class="container" style="padding: 80px 0px 40px 0px;">
+        <div class="row text-center">
+            <h3 class="news-h3 text-center" style="color: red;"> TIN TỨC THỊ TRƯỜNG </h3>
+            <p> <img src="~/Assets/Client/images/moto/di.png" /></p>
+        </div>
+    </div>
+</div>
+
+
+<!--news list-->
+<div class="bg-1">
+    <div class="container" style="margin-top: -30px; padding: 80px 0px; width: 94%">
+        @foreach (var item in Model)
+        {
+            <a href="/noi-dung-tin-tuc/@item.id">
+                <div class="col-sm-3" style="margin-bottom: 25px;">
+                    <p>
+                        <img src="@item.thunbar" class="new-img" alt="Image" width="306" height="181">
+                    </p>
+                    <h3 class="new-list-h3" style="color: #ff0000;">@item.name</h3>
+                </div>
+            </a>
+        }
+    </div>
+    <div class="container" style="padding: 0px 0px">
+        <div class="col-md-12 new-page-12" >
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @search = @ViewBag.Search }))
+        </div>
+    </div>
+</div>
+<br />
+

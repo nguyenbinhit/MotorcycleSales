@@ -1,0 +1,15 @@
+E:\WebXeMoto\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+E:\WebXeMoto\Models\bin\Debug\Models.dll.config
+E:\WebXeMoto\Models\bin\Debug\Models.dll
+E:\WebXeMoto\Models\bin\Debug\Models.pdb
+E:\WebXeMoto\Models\bin\Debug\EntityFramework.dll
+E:\WebXeMoto\Models\bin\Debug\EntityFramework.SqlServer.dll
+E:\WebXeMoto\Models\bin\Debug\PagedList.dll
+E:\WebXeMoto\Models\bin\Debug\PagedList.Mvc.dll
+E:\WebXeMoto\Models\bin\Debug\EntityFramework.xml
+E:\WebXeMoto\Models\bin\Debug\EntityFramework.SqlServer.xml
+E:\WebXeMoto\Models\bin\Debug\PagedList.xml
+E:\WebXeMoto\Models\bin\Debug\PagedList.Mvc.xml
+E:\WebXeMoto\Models\obj\Debug\Models.csproj.CopyComplete
+E:\WebXeMoto\Models\obj\Debug\Models.dll
+E:\WebXeMoto\Models\obj\Debug\Models.pdb

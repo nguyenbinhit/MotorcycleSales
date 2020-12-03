@@ -1,0 +1,112 @@
+﻿<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid" style="background-color: #191919;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- Thanh ngang header -->
+            <a class="navbar-brand header-logo" href="/trang-chu" style="color: red;"> MOTORCYCLE </a>
+            <!--Menu-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/trang-chu">Trang chủ </a></li>
+                <li><a href="/gioi-thieu">Giới thiệu</a></li>
+                <li><a href="/san-pham">Sản phẩm</a></li>
+                <li><a href="/tin-tuc">Tin tức</a></li>
+                <li><a href="/lien-he">Liên hệ</a></li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <!--Menu-->
+            <ul class="nav navbar-nav navbar-right">
+                @{
+                    var session = (WebXe.Common.UserLogin)Session[WebXe.Common.CommonConstants.USER_SESSION];
+                }
+                @if (session == null)
+                {
+                    <li class="dropdown">
+                        <a href="/dang-ky-dang-nhap" style="font-weight: bold; letter-spacing: 1px; font-size: 11pt; font-family: Myriad Pro;">
+                            <i class="fa fa-unlock-alt header-icons"></i> Đăng nhập /
+                            <i class="fa fa-user-plus header-icons"></i> Đăng ký
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="dropdown">
+                        <a href="/khach-hang/@session.UserID" style="font-weight: bold; letter-spacing: 1px; font-size: 11pt; font-family: Myriad Pro;">
+                            <span class="glyphicon glyphicon-user header-icons"></span>
+                            @session.UserName
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/dang-xuat" style="font-weight: bold; letter-spacing: 1px; font-size: 11pt; font-family: Myriad Pro;">
+                            <i class="fa fa-sign-out header-icons"></i> Đăng xuất
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/gio-hang" style="font-weight: bold; letter-spacing: 1px; font-size: 11pt; font-family: Myriad Pro;">
+                            <span class="glyphicon glyphicon-shopping-cart header-icons"></span>
+                            Giỏ hàng
+                        </a>
+                    </li>
+                }
+                <!--Search-->
+                <li class="dropdown">
+                    @using (Html.BeginForm("Index", "ProductClient", FormMethod.Get, new { @class = "navbar-form nav navbar-nav navbar-right" }))
+                    {
+                        <div class="form-group input-group" style="margin-right: 15px;">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" style="width:100px">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit" value="@ViewBag.Search">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    }
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!--home page banner runs horizontally-->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="~/Assets/Client/banner/banner2.jpg" alt="banner2">
+        </div>
+
+        <div class="item">
+            <img src="~/Assets/Client/banner/banner3.jpg" alt="banner3">
+        </div>
+
+        <div class="item">
+            <img src="~/Assets/Client/banner/banner4.jpg" alt="banner4">
+        </div>
+
+        <div class="item">
+            <img src="~/Assets/Client/banner/banner1.png" alt="banner1">
+        </div>
+
+        <div class="item">
+            <img src="~/Assets/Client/banner/banner7.jpg" alt="banner7">
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="color: #ffffff"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="color: #ffffff"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>

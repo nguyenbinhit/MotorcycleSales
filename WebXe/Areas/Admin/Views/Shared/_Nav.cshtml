@@ -1,0 +1,114 @@
+﻿<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item nav-profile">
+            <div class="nav-link">
+                <div class="profile-image">
+                    <img src="~/Assets/Admin/images/avatar.png" alt="image">
+                    <span class="online-status online"></span>
+                </div>
+                <div class="profile-name">
+                    @{ 
+                        var session = (WebXe.Common.AccountLogin)Session[WebXe.Common.CommonConstants.ACCOUNT_SESSION];
+                    }
+                    <p class="name">
+                        @session.AccountName
+                    </p>
+                    <p class="designation">
+                        ADMIN
+                    </p>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/trang-thong-ke">
+                <i class="fa fa-signal menu-icon"></i>
+                <span class="menu-title">Bảng thống kê</span>
+                <span class="badge badge-success">New</span>
+            </a>
+        </li>
+        <li class="nav-item d-none d-lg-block">
+            <a class="nav-link" data-toggle="collapse" href="#sidebar-layouts" aria-expanded="false" aria-controls="sidebar-layouts">
+                <i class="fa fa-list-ul menu-icon"></i>
+                <span class="menu-title">Danh mục </span>
+            </a>
+            <div class="collapse" id="sidebar-layouts">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mau-xe-ad">
+                            Màu xe
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/hang-xe-ad">
+                            Hãng xe
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/the-loai-xe-ad">
+                            Thể loại xe
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dung-tich-xi-lanh-xe-ad">
+                            Dung tích xe
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/san-pham-ad">
+                <i class="fa fa-motorcycle menu-icon" style="margin-right: 1rem;"></i>
+                <span class="menu-title">Xe</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/tin-tuc-ad">
+                <i class="fa fa-newspaper-o menu-icon"></i>
+                <span class="menu-title">Tin tức</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/danh-gia-binh-luan-ad">
+                <i class="icon-bubbles menu-icon"></i>
+                <span class="menu-title">Đánh giá bình luận</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/lien-he-ad">
+                <i class="fa fa-phone menu-icon"></i>
+                <span class="menu-title">Liên hệ</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/don-hang-ad">
+                <i class="mdi mdi-basket menu-icon"></i>
+                <span class="menu-title">Đơn hàng</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/khach-hang-ad">
+                <i class="fa fa-users menu-icon"></i>
+                <span class="menu-title">Khách hàng</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/trang-tinh-ad">
+                <i class="icon-grid menu-icon"></i>
+                <span class="menu-title">Trang tĩnh</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin-nhan-vien-ad">
+                <i class="fa fa-user-circle-o menu-icon"></i>
+                <span class="menu-title">ADMIN</span>
+            </a>
+        </li>
+        <li class="nav-item nav-doc">
+            <a class="nav-link bg-primary" href="/dang-xuat-ad">
+                <i class="fa fa-power-off menu-icon"></i>
+                <span class="menu-title">Đăng xuất</span>
+            </a>
+        </li>
+    </ul>
+</nav>

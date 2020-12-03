@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> MOTORCYCLE : ĐỒ ÁN </title>
+    <meta charset="utf-8">
+
+    @Styles.Render("~/Assets/Client/css")
+
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+
+    @Scripts.Render("~/Assets/Client/js")
+
+    <link href="~/Assets/Client/doc/css/ads.css" rel="stylesheet" />
+
+    <script src="~/Assets/Client/doc/js/BannerFloat.js"></script>
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <!-- Quảng cáo chạy dọc 2 bên -->
+    <div class="adfloat" id="divBannerFloatLeft">
+        <p>
+            <a href="#" target="_blank"><img src="~/Assets/Client/images/slide/banner2.png" alt="banner2"></a>
+        </p>
+    </div>
+    <div class="adfloat" id="divBannerFloatRight">
+        <p>
+            <a href="#" target="_blank"><img src="~/Assets/Client/images/slide/banner2.png" alt="banner2"></a>
+        </p>
+    </div>
+
+    @RenderPage("_NavPro.cshtml")
+
+    @RenderBody()
+
+    <!--Contact your distributor-->
+    <div class="bg-1" style="background-image: url('/Assets/Client//banner/lienhe.jpg'); background-size: cover; margin-bottom: -50px;">
+        <div class="container" style="width: 1470px;">
+            <div class="row text-center" style="margin-top: -50px;">
+                <p id="footer-h">MOTORCYCLE</p>
+                <p class="footer-infor-p">
+                    <span class="glyphicon glyphicon-map-marker footer-span"></span>
+                    Showroom: T3H - Mai Dịch - Hà Nội
+                </p>
+                <p class="footer-infor-p">
+                    <span class="glyphicon glyphicon-phone footer-span"></span>
+                    Phone: 0334679170 - 0948563263
+                </p>
+                <p class="footer-infor-p">
+                    <span class="glyphicon glyphicon-envelope footer-span"></span>
+                    Email: motorcycle@gmail.com - nguyenbinhit@gmail.com
+                </p>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-md-3" style="width: 20%">
+                    <p class="footer-pt">Giờ Làm Việc:</p>
+                    <p class="footer-p">Sáng: 8h00 đến 11h00p.</p>
+                    <p class="footer-p">Chiều: 14h00 đến 17h00p.</p>
+                    <p class="footer-p">Tối: 18h00 đến 21h00p.</p>
+                </div>
+                <div class="col-md-3" style="width: 20%">
+                    <p class="footer-pt">Tài khoản ngân hàng:</p>
+                    <p class="footer-p">Vietcombank: 0898742645047802</p>
+                    <p class="footer-p">Techcombank: 0898742645047802</p>
+                    <p class="footer-p">Agribank: 0898742645047802</p>
+                </div>
+                <div class="col-md-3" style="width: 20%">
+                    <p class="footer-pt">Thông tin:</p>
+                    <p><a href="#" class="footer-p-a">Tuyển dụng nhân sự.</a></p>
+                    <p><a href="#" class="footer-p-a">Tư vấn mua hàng trả góp.</a></p>
+                    <p><a href="#" class="footer-p-a">Hệ thống các cửa hàng trên cả nước.</a></p>
+                </div>
+                <div class="col-md-3" style="width: 20%">
+                    <p class="footer-pt">Hỗ trợ khách hàng:</p>
+                    <p class="footer-p">Hỗ trợ online 24/7: 0334 679 170</p>
+                    <p class="footer-p">Hỗ trợ kỹ thuật: 0334 679 170</p>
+                    <p class="footer-p">Hỗ trợ bảo hành: 0334 679 170</p>
+                </div>
+                <div class="col-md-3" style="width: 20%">
+                    <p class="footer-pt">Chính Sách:</p>
+                    <p><a href="#" class="footer-p-a">Chính sách giao hàng.</a></p>
+                    <p><a href="#" class="footer-p-a">Chính sách đổi trả hàng.</a></p>
+                    <p><a href="#" class="footer-p-a">Chính sách bảo mật thông tin.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <a class="up-arrow" href="#" data-toggle="tooltip" title="TO TOP">
+            <span class="glyphicon glyphicon-chevron-up" style="color: #ffffff;"></span>
+        </a><br>
+        <p class="footer-p">
+            ĐỒ ÁN... MOTORCYLE © 2020...Sinh viên: Nguyễn Khắc Bình ! ! !
+        </p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Assets/Client/js/ckfinder/ckfinder.js"></script>
+    <script src="~/Assets/Client/js/slick.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>
+<script type="text/javascript">
+    $(function () {
+        $hidenitem = $(".hidenitem");
+        $itemproduct = $(".item-product");
+        $itemproduct.hover(function () {
+            $(this).children(".hidenitem").show(100);
+        }, function () {
+            $hidenitem.hide(500);
+        })
+    })
+
+    $(function () {
+        $updatecart = $(".updatecart");
+        $updatecart.click(function (e) {
+            e.preventDefault();
+            var qty = $(this).parents("tr").find("#qty").val();
+            var key = $(this).attr("data-key");
+            $.ajax({
+                url: '/CartClient/Edit',
+                type: 'GET',
+                data: { 'qty': qty, 'key': key },
+                success: function (data) {
+                    if (data == 1) {
+                        alert("  Cập nhật giỏ hàng thành công ");
+                        location.href = '/CartClient/Index';
+                    }
+                }
+            });
+        })
+    })
+</script>

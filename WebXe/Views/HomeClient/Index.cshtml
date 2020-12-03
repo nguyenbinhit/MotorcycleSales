@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- home page banner runs horizontally -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="5"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="~/Assets/Client/banner/banner3.jpg" alt="Banner3">
+        </div>
+
+        <div class="item">
+            <img src="~/Assets/Client/banner/banner2.jpg" alt="Banner2">
+        </div>
+
+        <div class="item">
+            <img src="~/Assets/Client/banner/banner4.jpg" alt="Banner4">
+        </div>
+
+        <div class="item">
+            <img src="~/Assets/Client/banner/banner1.png" alt="Banner1">
+        </div>
+
+        <div class="item">
+            <img src="~/Assets/Client/banner/banner7.jpg" alt="Banner7">
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left home-color" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right home-color" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<!-- List of products on display -->
+<div class="bg-1 home-list">
+    <div class="container home-container">
+        <div class="row text-center">
+            <h3 class="home-h3 text-center" style="color: red;"> DANH MỤC SẢN PHẨM </h3>
+            <div>
+                @foreach (var item in ViewBag.Product)
+                {
+                    <div class="col-sm-3 home-list-pro">
+                        <div class="home-thumbnail">
+                            <img src="@item.imagemain" class="img-responsive pull-left home-img home-list-pro" width="400" height="300" alt="ImageProduct">
+                            <div class="info-item">
+                                <p><strong class="home-strong">@item.name</strong></p>
+                                <p><b class="price home-b">@item.price.ToString("C")</b></p>
+                            </div>
+                            <br />
+                            <div>
+                                <a href="~/ProductClient/Details/@item.id">
+                                    <button type="button" class="btn" id="home-btn-primary">
+                                        Xem chi tiết <span class="fa fa-angle-double-right home-product-span"></span>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- list of car brands' logos -->
+<div class="bg-1 home-logo-background">
+    <div class="container-fluid text-center" style="padding: 0px 0px 50px 5px">
+        <h3 class="text-center home-h3" style="color: red;margin-top: 35px;margin-bottom: 40px;"> THƯƠNG HIỆU HÃNG XE </h3>
+        @foreach (var item in ViewBag.Car)
+        {
+            <div class="col-sm-2" style="width: 11%">
+                <a href="~/CarManufacturerClient/Index/@item.id"><img src="@item.thunbar" width="150" height="80"></a>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- services MOTORCYCLE -->
+<div class="bg-1 home-service-backgroud">
+    <div class="container-fluid text-center" style="padding: 0px 0px 35px 5px">
+        <h3 class="home-service-h3 text-center" style="color: red;"> DỊCH VỤ CỦA MOTORCYCLE</h3>
+        <p class="home-service-p-img"><img src="~/Assets/Client/images/moto/di.png"></p>
+        <div class="col-sm-3 home-service-width">
+            <img src="~/Assets/Client/images/dichvu/baotri.jpg" class="home-service-img" alt="Maintenance" />
+            <p class="home-service-p" style="font-style: normal;">BẢO TRÌ</p>
+        </div>
+        <div class="col-sm-3 home-service-width">
+            <img src="~/Assets/Client/images/dichvu/vesinh.jpg" class="home-service-img" alt="Hygienic" />
+            <p class="home-service-p" style="font-style: normal;">VỆ SINH</p>
+        </div>
+        <div class="col-sm-3 home-service-width">
+            <img src="~/Assets/Client/images/dichvu/danhbong.jpg" class="home-service-img" alt="Refurbished" />
+            <p class="home-service-p" style="font-style: normal;">TÂN TRANG</p>
+        </div>
+    </div>
+</div>
+
+<!-- Why choose MOTORCYCLE -->
+<div class="bg-1 home-why-background">
+    <div class="container-fluid text-center" style="padding: 0px 0px 35px 5px">
+        <h3 class="home-why-h3 text-center" style="color: #ffffff;">
+            TẠI SAO NÊN CHỌN
+            <span class="home-why-h3-span" style="color: red;">
+                MOTORCYCLE
+            </span>
+        </h3>
+        <p class="home-why-p-img"><img src="~/Assets/Client/images/moto/di.png"></p>
+        <div class="col-sm-4">
+            <img src="~/Assets/Client/images/moto/khien.png" class="img-circle" width="100" height="90">
+            <p class="home-why-p1" style="color: #ffffff;font-style: normal;">Phục hồi và bảo vệ</p>
+            <br>
+            <p class="home-why-p" style="color: #ffffff;font-style: normal;">Cerma là công nghệ duy nhất thế giới phục hồi và bảo vệ động cơ với quy trình đơn giản. Công thức độc quyền liên tục tự làm sạch giúp thiết bị vận hành ở mức tối đa.</p>
+        </div>
+        <div class="col-sm-4">
+            <img src="~/Assets/Client/images/moto/khien1.png" class="img-circle" width="100" height="90">
+            <p class="home-why-p1" style="color: #ffffff;font-style: normal;">Bảo vệ tài chính</p>
+            <br>
+            <p class="home-why-p" style="color: #ffffff;font-style: normal;">Công nghệ Cerma tiết kiệm đáng kể chi phí nhiên liệu, dầu bôi trơn và sữa chữa bảo dưỡng, đặc biệt, thiết bị máy móc luôn hoạt động mà không có thời gian chết, tăng lợi nhuận của doanh nghiệp.</p>
+        </div>
+        <div class="col-sm-4">
+            <img src="~/Assets/Client/images/moto/khien2.png" class="img-circle" width="100" height="90">
+            <p class="home-why-p1" style="color: #ffffff;font-style: normal;">Bảo vệ môi trường</p>
+            <br>
+            <p class="home-why-p" style="color: #ffffff;font-style: normal;">Công nghệ Cerma tự hào góp phần bảo vệ môi trường khi có khả năng giảm nồng độ khí thải của phương tiện đến 92%. Đó là Cerma, là ước muốn và là sứ mệnh.</p>
+        </div>
+    </div>
+</div>
+

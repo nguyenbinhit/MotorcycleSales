@@ -1,0 +1,169 @@
+﻿
+@{
+    ViewBag.Title = "Thể loại xe";
+    Layout = "~/Views/Shared/_LayoutPro.cshtml";
+}
+
+
+<!--Category-->
+<div class="bg-1" style="background-color: #ffffff">
+    <div class="container" style="padding: 0px 0px">
+        <div class="row">
+            <h3 class="text-center pr-h3" style="color:red"> THỂ LOẠI XE </h3>
+            <p class="pr-p-img"><img src="~/Assets/Client/images/moto/di.png" alt="crossbar"></p>
+        </div>
+    </div>
+</div>
+
+<!-- Menu -->
+<div class="bg-1">
+    <div class="container" style="padding: 0px 0px">
+        <ul class="nav nav-tabs">
+            <!--List Menu-->
+            <li class="active"><a href="/san-pham" class="car-li-a">Tất cả</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle car-li-a" data-toggle="dropdown" href="#">Màu xe<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    @foreach (var item in ViewBag.CL)
+                    {
+                        <li><a href="/mau-sac-xe/@item.id" style="font-size: 12pt;">@item.name</a></li>
+                    }
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle car-li-a" data-toggle="dropdown" href="#">Hãng xe<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    @foreach (var item in ViewBag.HX)
+                    {
+                        <li><a href="/hang-xe/@item.id" style="font-size: 12pt;">@item.name</a></li>
+                    }
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle car-li-a" data-toggle="dropdown" href="#">Thể loại xe<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    @foreach (var item in ViewBag.TL)
+                    {
+                        <li><a href="/the-loai-xe/@item.id" style="font-size: 12pt;">@item.name</a></li>
+                    }
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--List of new products and new news and products by category-->
+<div id="wrapper">
+    <div id="maincontent" style="margin-top: 40px;">
+        <div class="container" style="padding: 0px 0px 40px 0px">
+            <div class="col-md-3  fixside" style="margin-top:20px">
+
+                <!--List of new products-->
+                <div class="box-left box-menu">
+                    <h3 class="box-title pr-npro"><i class="fa fa-motorcycle"></i>  Sản phẩm mới </h3>
+                    <ul>
+                        @foreach (var item in ViewBag.Product)
+                        {
+                            <li class="clearfix">
+                                <a href="/chi-tiet-san-pham/@item.id">
+                                    <img src="@item.imagemain" class="img-responsive pull-left" width="100" height="90" alt="Product">
+                                    <div class="info pull-right">
+                                        <p class="name" style="color: #000000;">@item.name</p>
+                                        @if (item.sale != null)
+                                        {
+                                            <b class="price" style="font-size: 10pt">
+                                                @item.sale
+                                            </b>
+                                            <br>
+                                        }
+                                        else
+                                        {
+                                            <b class="price" style="font-size: 10pt">@item.price.ToString("C")</b><br>
+                                        }
+                                        <span class="view"><i class="fa fa-eye"></i> 100000 : <i class="fa fa-heart-o"></i> 1000 </span>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                <!--New news list-->
+                <div class="box-left box-menu">
+                    <h3 class="box-title pr-npro"><i class="fa fa-warning"></i> Tin new</h3>
+                    <ul>
+                        @foreach (var item in ViewBag.New)
+                        {
+                            <li class="clearfix" style="padding: 10px 20px">
+                                <a href="/noi-dung-tin-tuc/@item.id">
+                                    <img src="@item.thunbar" class="img-responsive pull-left" width="95" height="90" alt="New">
+
+                                    <div class="info pull-right" style="margin-left:5px">
+                                        <p class="name" style="color: #000000;font-weight: bold;">@item.name</p>
+                                        <small><i class="fa fa-clock-o"></i> @item.date_created</small>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
+            <!--List of products by category-->
+            <div class="col-md-9" style="padding-bottom: 15px;">
+                <section class="box-main1">
+                    <div class="showitem">
+                        @foreach (var item in ViewBag.ALLPro)
+                        {
+                            <div class="col-md-3 item-product" style="border: 0.5px solid #ebebeb">
+                                <a href="/chi-tiet-san-pham/@item.id">
+                                    <img src="@item.imagemain" class="imagemain" alt="Product">
+                                </a>
+                                <div class="info-item">
+                                    <a href="#">@item.name</a>
+                                    @if (item.sale != null)
+                                    {
+                                        <p>
+                                            <strike class="sale" style="font-size: 10pt;">
+                                                @item.price.ToString("C")
+                                            </strike>
+                                            <b class="price" style="font-size: 10pt">
+                                                @item.sale
+                                            </b>
+                                        </p><br>
+                                    }
+                                    else
+                                    {
+                                        <p><b class="price" style="font-size: 10pt">@item.price.ToString("C")</b></p><br>
+                                    }
+                                </div>
+                                <div class="hidenitem">
+                                    <p><a href="/chi-tiet-san-pham/@item.id"><i class="fa fa-search"></i></a></p>
+                                    <p><a href="~/CartClient/AddItem?product_ID=@item.id&qty=1"><i class="fa fa-shopping-basket"></i></a></p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="container" style="padding: 0px 0px 50px 0px">
+            <div class="col-md-4 bottom-content">
+                <a href="#">
+                    <img src="~/Assets/Client/images/free-shipping.png" />
+                </a>
+            </div>
+            <div class="col-md-4 bottom-content">
+                <a href="#">
+                    <img src="~/Assets/Client/images/guaranteed.png" />
+                </a>
+            </div>
+            <div class="col-md-4 bottom-content">
+                <a href="#">
+                    <img src="~/Assets/Client/images/deal.png" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

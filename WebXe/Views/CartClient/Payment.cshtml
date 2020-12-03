@@ -1,0 +1,147 @@
+﻿@model List<WebXe.Models.CartItemModel>
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var session = (WebXe.Common.UserLogin)Session[WebXe.Common.CommonConstants.USER_SESSION];
+
+    double sum = 0;
+    double total = 0;
+}
+
+
+<!--Payment-->
+<div class="bg-1" style="background-color: #fdf5e6;">
+    <div class="container" style="padding: 80px 0px 50px 0px;">
+        <div class="row text-center">
+            <h3 class="text-center payment-h3" style="color: red;"> THANH TOÁN ĐƠN HÀNG </h3>
+            <p> <img src="~/Assets/Client/images/moto/di.png" /></p>
+        </div>
+    </div>
+</div>
+
+<!-- payment product list -->
+<div id="wrapper">
+    <div id="maincontent">
+        <div class="container" style="padding: 50px 0px 80px 0px">
+            <div class="col-md-12">
+                <section class="box-main1">
+                    <table class="table table-hover" id="shoppingcart_info">
+                        <thead>
+                            <tr>
+                                <th class="cart-th">Mã SP</th>
+                                <th class="cart-th">Tên sản phẩm</th>
+                                <th class="cart-th">Hình ảnh</th>
+                                <th class="cart-th" style="width: 15%">Số lượng</th>
+                                <th class="cart-th">Giá</th>
+                                <th class="cart-th">Tổng tiền</th>
+                                <th class="cart-th"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td style="padding-top: 30px;font-size: 11pt;">@item.Product.id</td>
+                                    <td style="padding-top: 30px;font-size: 11pt;">@item.Product.name</td>
+                                    <td>
+                                        <img src="@item.Product.imagemain" style="width:95px; height:60px" />
+                                    </td>
+                                    <td>
+                                        <input type="number" readonly="" value="@item.Qty" class="form-control txtqty" id="qty" min="0" style="width: 45%;margin-top: 10px;background-color:#fff">
+                                    </td>
+                                    <td style="padding-top: 30px">
+                                        @if (item.Product.sale > 0)
+                                        {
+                                            @item.Product.sale
+                                        }
+                                        else
+                                        {
+                                            @item.Product.price.ToString("N0")
+                                        }
+                                    </td>
+                                    <td style="padding-top: 30px">
+                                        @if (item.Product.sale > 0)
+                                        {
+                                            @(item.Product.sale * item.Qty)
+                                        }
+                                        else
+                                        {
+                                            @((item.Product.price * item.Qty).ToString("N0"))
+                                        }
+                                    </td>
+                                </tr>
+                                sum = (item.Product.price * item.Qty) + sum;
+                                total = sum * 105 / 100;
+                            }
+                        </tbody>
+                    </table>
+                </section>
+                <br /><br />
+                <section class="box-main1">
+                    <div class="col-md-7 pull-left">
+                        @using (Html.BeginForm("Payment", "CartClient", FormMethod.Post))
+                        {
+                            <div class="form-group">
+                                <label class="control-label">Người nhận:</label>
+                                <input type="hidden" name="shipId" class="form-control" value="@session.UserID">
+                                <input type="text" readonly="" name="shipName" class="form-control" value="@session.UserName">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Số điện thoại:</label>
+                                <input type="text" readonly="" name="shipEhone" class="form-control" value="@session.UserPhone">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Email:</label>
+                                <input type="text" readonly="" name="shipEmail" class="form-control" value="@session.UserEmail">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Địa chỉ:</label>
+                                <input type="text" readonly="" name="shipAddress" class="form-control" value="@session.UserAddress">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Tổng số tiền:</label>
+                                <input type="text" readonly="" name="amount" class="form-control" value="@total.ToString("N0")">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Ghi chú:</label>
+                                <input type="text" name="shipNote" class="form-control" placeholder="giao hàng tận nơi">
+                            </div>
+
+                            <button type="submit" class="btn payment-btn-success col-md-2 col-md-offset-5" style="margin: 20px 0px">Thanh toán</button>
+                        }
+                    </div>
+                    <div class="col-md-5 pull-right" style="margin: 10px 0px 0px 0px">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <h3 style="font-size: 20pt;letter-spacing: 0px">Thông tin đơn hàng</h3>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge">
+                                    @sum.ToString("N0")
+                                </span>
+                                Số tiền hàng:
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge">5%</span>
+                                Thuế VAT:
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge">
+                                    @total.ToString("N0")
+                                </span>
+                                Tổng tiền thanh toán:
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

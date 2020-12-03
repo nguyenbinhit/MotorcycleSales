@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Quản lý liên hệ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model PagedList.IPagedList<Models.EF.Contact>
+@using PagedList;
+@using PagedList.Mvc;
+
+
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body pb-0">
+                <h3 class="card-title">Khách hàng liên hệ</h3>
+                <div class="d-flex table-responsive">
+                    <div class="btn-tm ml-auto mr-2 border-0">
+                    </div>
+                    @using (Html.BeginForm("Index", "ContactAdmin", FormMethod.Get))
+                    {
+                        <div class="btn-group mr-2 border-1">
+                            <input type="text" name="search" class="btn btn-light form-control border-1" value="@ViewBag.Search" placeholder="Tìm kiếm">
+                            <button type="submit" class="btn btn-light border-1" style="margin-left: 0px;"><i class="fa fa-search"></i></button>
+                        </div>
+                    }
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-12" id="row_@item.id">
+                            <div class="wrapper border-bottom py-2">
+                                <div class="d-flex">
+                                    <img class="img-sm rounded-circle" src="~/Assets/Admin/images/avatar.png" alt="" style="width:50px; height:50px;">
+                                    <div class="wrapper ml-4" style="min-width: 20%">
+                                        <p class="mb-0 fontsize-p">@item.name</p>
+                                        <small class="text-muted mb-0">@item.email</small>
+                                    </div>
+                                    <div class="wrapper w-100 ml-3 text-right">
+                                        <a class="btn btn-xs btn-info" href="/chi-tiet-lien-he-ad/@item.id"> <i class="fa fa-search"></i> Xem chi tiết </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- phân trang -->
+                <br>
+                <div class="d-flex align-items-center justify-content-between flex-column flex-sm-row mt-4">
+                    <p class="mb-3 mb-sm-0">Trang @Model.PageNumber / @Model.PageCount</p>
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @search = @ViewBag.Search }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

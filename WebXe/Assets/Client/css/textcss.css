@@ -1,0 +1,997 @@
+﻿.home-color {
+    color: #ffffff;
+}
+
+.home-list {
+    background-color: #f9f9f9;
+}
+
+.home-container {
+    width: 1380px;
+}
+
+.home-h3 {
+    font-size: 30pt;
+    letter-spacing: 2px;
+    color: red;
+    margin-top: -40px;
+    padding-bottom: 25px;
+    text-decoration: underline;
+    font-family: Baloo Bhai;
+}
+
+#home-btn-primary {
+    padding: 3px 18px;
+    background-color: #FF4500;
+    border-radius: 200px;
+    transition: .2s;
+    height: 38px;
+    font-size: 10pt;
+    border-color: #FF4500;
+    border: hidden;
+}
+
+#home-btn-primary:hover {
+    border: 1px solid #333;
+    background-color: #007fff;
+    border-color: #007fff;
+    border: hidden;
+}
+
+.home-img {
+    display: block;
+    max-width: 100%;
+    height: 180px;
+}
+
+.home-thumbnail {
+    background-color: #ffffff;
+    padding-bottom: 10px;
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+}
+.home-thumbnail:hover {
+    transform: scale(1.12, 1.12);
+    -webkit-transform: scale(1.12, 1.12);
+    -moz-transform: scale(1.12, 1.12);
+    -o-transform: scale(1.12, 1.12);
+    -ms-transform: scale(1.12, 1.12);
+}
+
+.home-list-pro {
+    margin-bottom: 30px;
+}
+
+.home-strong {
+    font-size: 13pt;
+    font-family: Myriad Pro;
+}
+.home-b {
+    font-size: 12pt;
+    font-family: Myriad Pro;
+}
+
+.home-product-span {
+    color: #ffffff;
+    font-size: 11pt;
+}
+
+.home-logo-background {
+    background-color: #ffffff;
+}
+
+.home-service-backgroud {
+    background-color: #f2f2f2;
+}
+
+.home-service-width {
+    width: 33.3%;
+}
+
+.home-service-h3 {
+    font-size: 30pt;
+    letter-spacing: 2px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-family: Baloo Bhai;
+}
+
+.home-service-p-img {
+    text-align: center;
+    margin-bottom: 30px
+}
+
+.home-service-img {
+    border-radius: 50%;
+    border: 2px solid red;
+    width: 240px;
+    height: 230px;
+}
+
+.home-service-p {
+    margin-top: 15px;
+    font-size: 16pt;
+    color: red;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-align: center;
+    font-family: Montserrat;
+}
+
+.home-why-background {
+    background-color: #2b2b2b;
+}
+
+.home-why-h3 {
+    font-size: 30pt;
+    letter-spacing: 2px;
+    margin-top: 45px;
+    margin-bottom: 15px;
+    font-family: Baloo Bhai;
+}
+
+.home-why-h3-span {
+    font-size: 30pt;
+    letter-spacing: 2px;
+    margin-top: 45px;
+    margin-bottom: 45px;
+    font-weight: bold;
+    font-family: Baloo Bhai;
+}
+
+.home-why-p-img {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.home-why-p1 {
+    margin-top: 15px;
+    font-size: 16pt;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-family: Montserrat
+}
+
+.home-why-p {
+    font-size: 12pt;
+}
+
+.car-title-background {
+    background-color: #ffffff;
+}
+
+.car-h3 {
+    font-size: 30pt;
+    letter-spacing: 1px;
+    margin-top: 50px;
+    font-family: Baloo Bhai;
+}
+
+.car-p-img {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.car-li-a {
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Montserrat
+}
+
+.car-new-h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    letter-spacing: 1px;
+    font-family: Arial;
+    font-size: 14pt;
+}
+
+.cart-error-background {
+    background-color: #fdf5e6;
+}
+
+.cart-error-h3 {
+    letter-spacing: 2px;
+    font-family: Baloo Bhai;
+}
+
+.cart-notification {
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    border-radius: 8px;
+}
+
+.cart-h3 {
+    font-size: 30pt;
+    letter-spacing: 1px;
+    margin-top: 50px;
+    font-family: Baloo Bhai;
+}
+
+.cart-p-img {
+    text-align: center;
+    margin-bottom: 20px
+}
+
+.cart-12 {
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    border-radius: 8px;
+}
+
+.cart-th {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.cart-left {
+    margin-left: 5px;
+}
+
+.cart-btn-danger {
+    padding: 4px 10px;
+    background-color: #CD5C5C;
+    color: #ffffff;
+    border-radius: 5px;
+    transition: .2s;
+    height: 30px;
+    font-size: 11pt;
+    border: hidden;
+}
+
+.cart-btn-danger:hover {
+    border: 0px solid #333;
+    background-color: #FF0000;
+    color: #ffffff;
+    border: hidden;
+}
+
+.cart-btn-info {
+    padding: 4px 10px;
+    background-color: #00BFFF;
+    color: #ffffff;
+    border-radius: 5px;
+    transition: .2s;
+    height: 30px;
+    font-size: 11pt;
+    border: hidden;
+}
+
+.cart-btn-info:hover {
+    border: 0px solid #333;
+    background-color: #1E90FF;
+    color: #ffffff;
+    border: hidden;
+}
+
+.cart-btn-success {
+    padding: 4px 10px;
+    border-radius: 5px;
+    background-color: #00c292;
+    transition: .2s;
+    height: 30px;
+    font-size: 11pt;
+    border: hidden;
+}
+
+.cart-btn-success:hover {
+    border: 1px solid #333;
+    background-color: #2E8B57;
+    border-color: #2E8B57;
+    border: hidden;
+}
+
+.cart-btn-primary {
+    padding: 4px 10px;
+    background-color: #fb9678;
+    border-radius: 5px;
+    transition: .2s;
+    height: 30px;
+    font-size: 11pt;
+    border: hidden;
+}
+
+.cart-btn-primary:hover {
+    border: 1px solid #333;
+    background-color: #FF6347;
+    border-color: #FF6347;
+    border: hidden;
+}
+
+.payment-h3 {
+    font-size: 30pt;
+    letter-spacing: 2px;
+    font-family: Baloo Bhai;
+}
+
+.payment-btn-success {
+    padding: 2px 10px;
+    background-color: #5cb85c;
+    border-radius: 5px;
+    transition: .2s;
+    height: 30px;
+    font-size: 12pt;
+}
+
+.payment-btn-success:hover {
+    border: 1px solid #333;
+    background-color: #449d44;
+    border-color: #4cae4c;
+}
+
+.pr-h3 {
+    font-size: 30pt;
+    letter-spacing: 1px;
+    margin-top: 50px;
+    font-family: Baloo Bhai;
+}
+
+.pr-p-img {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pr-li-a {
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Montserrat
+}
+
+.pr-npro {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    letter-spacing: 1px;
+    font-family: Arial;
+    font-size: 14pt;
+}
+
+.contact-h3 {
+    letter-spacing: 2px;
+    font-size: 30pt;
+    font-family: Baloo Bhai;
+}
+
+.contact-container {
+    margin-left: -5px;
+    margin-top: -30px;
+    padding: 80px 50px
+}
+
+.contact-infor-h3 {
+    font-size: 16pt;
+    letter-spacing: 0px;
+    font-family: Arial;
+    line-height: 1.6;
+}
+
+.contact-info-span {
+    font-size: 15pt;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.contact-new-h2 {
+    font-size: 15pt;
+    font-family: Arial;
+    font-weight: bold;
+    letter-spacing: .025em;
+}
+
+.contact-newd {
+    border-bottom: 3px solid red;
+    width: 80px;
+    margin-top: .66em;
+}
+
+.contact-new-li {
+    border-bottom: 1px solid #ececec;
+    height: 60px
+}
+
+.contact-new-p {
+    padding-top: 5px;
+}
+
+.contact-new-a {
+    font-size: 13pt;
+    font-family: Arial;
+    font-style: normal;
+}
+
+.intro-h3 {
+    font-size: 30pt;
+    letter-spacing: 2px;
+    padding-top: 20px;
+    font-family: Baloo Bhai
+}
+
+.intro-content-background {
+    background-color: #ffffff;
+    margin-top: -40px;
+}
+
+.p-gioi-thieu {
+    font-size: 13pt;
+    font-style: normal;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #2f2f2f;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.span-gioi-thieu {
+    font-weight: bold;
+    font-size: 16pt;
+    font-style: normal;
+    color: red;
+    letter-spacing: 1px;
+    font-family: Baloo Bhai
+}
+
+.blog {
+    font-size: 15pt;
+    font-style: normal;
+    letter-spacing: 1px;
+    color: red;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.blog-con {
+    font-size: 12pt;
+    color: #2f2f2f;
+    font-style: normal;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin-left: 1em;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.blogg {
+    font-size: 13pt;
+    font-weight: unset;
+}
+
+.login-registration-h3 {
+    font-size: 30pt;
+    letter-spacing: 2px;
+    font-family: Baloo Bhai;
+}
+
+.login-bg1 {
+    padding: 0px 60px;
+    align-items: baseline;
+}
+
+.login-h3 {
+    font-size: 15pt;
+    letter-spacing: 0px;
+    font-family: Arial;
+    line-height: 1.6;
+}
+
+.login-horizontal {
+    margin-left: 15px;
+    line-height: 1.6;
+    padding: 0px 25px;
+}
+
+.login-label {
+    font-size: 12.5pt;
+    font-family: Arial;
+    color: #555555;
+    font-weight: normal;
+}
+
+.regis-h3 {
+    font-size: 15pt;
+    letter-spacing: 0px;
+    font-family: Arial;
+    line-height: 1.6;
+}
+
+.regis-horizontal {
+    margin-left: 15px;
+    line-height: 1.6;
+    padding: 0px 60px;
+}
+
+.regis-label {
+    font-size: 12.5pt;
+    font-family: Arial;
+    color: #555555;
+    font-weight: normal;
+}
+
+.news-h3 {
+    letter-spacing: 2px;
+    font-family: Baloo Bhai;
+    font-size: 30pt;
+}
+
+.new-img {
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+}
+
+.new-img:hover {
+    transform: scale(1.05,1.05);
+    -webkit-transform: scale(1.05,1.05);
+    -moz-transform: scale(1.05,1.05);
+    -o-transform: scale(1.05,1.05);
+    -ms-transform: scale(1.05,1.05);
+}
+
+.new-list-h3 {
+    letter-spacing: 0em;
+    font-size: 13pt;
+    margin-bottom: 5px;
+    font-family: Montserrat;
+    font-style: normal
+}
+
+.new-page-12 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.content-new-h3 {
+    letter-spacing: 2px;
+    font-size: 30pt;
+    font-family: Baloo Bhai;
+}
+
+.content-new {
+    color: #333333;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13pt;
+    
+}
+
+.content-main-new-h3 {
+    letter-spacing: 1px;
+    font-style: italic;
+    font-size: 26pt;
+}
+
+.user-title {
+    font-size: 30pt;
+    letter-spacing: 1px;
+    margin-top: 50px;
+    font-family: Baloo Bhai;
+}
+
+.user-p-img {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.user-2 {
+    background-color: #ffffff;
+    margin-left: 12px;
+    width: 20%;
+    border: 0px;
+}
+
+.user-hello-p1 {
+    font-size: 15pt;
+    font-weight: bold;
+    font-family: Montserrat;
+}
+
+.user-hello-p2 {
+    font-size: 13pt;
+    font-style: normal;
+    font-weight: bold;
+    margin-top: 5px;
+    font-family: Montserrat;
+}
+
+.user-span {
+    font-size: 34pt;
+    margin-top: 5px;
+}
+
+.user-p {
+    font-size: 13pt;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.user-9 {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.user-order-h3 {
+    text-align: left;
+    margin-top: -8px;
+    letter-spacing: 2px;
+}
+
+.user-th {
+    font-weight: bold;
+    font-size: 11pt;
+}
+
+.user-order-detail-9 {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.user-order-detail-h3 {
+    text-align: center;
+    margin-top: -10px;
+    letter-spacing: 1px;
+}
+
+.user-td {
+    font-size: 11pt;
+}
+
+.user-orderdetail-p {
+    font-size: 12pt;
+    text-align: right;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.product-h3 {
+    font-size: 30pt;
+    letter-spacing: 1px;
+    margin-top: 50px;
+    font-family: Baloo Bhai;
+}
+
+.product-page-9 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.product-img {
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+}
+
+.product-img:hover {
+    transform: scale(1.2,1.2);
+    -webkit-transform: scale(1.2,1.2);
+    -moz-transform: scale(1.2,1.2);
+    -o-transform: scale(1.2,1.2);
+    -ms-transform: scale(1.2,1.2);
+}
+
+.product-12 {
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.product-name-5 {
+    margin-top: 35px;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.product-name {
+    letter-spacing: 0px;
+    margin-top: -10pt;
+    font-family: Montserrat;
+}
+
+#product-div0 {
+    border-bottom: 3px solid red;
+    width: 100px;
+    margin-top: -22px;
+}
+
+.product-li {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.product-price {
+    font-size: 15pt;
+}
+
+#pro-number-p {
+    letter-spacing: 0px;
+    color: #444;
+    font-size: 12pt;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+#pro-number-span {
+    letter-spacing: 0px;
+    font-size: 12pt;
+    margin-top: -10pt;
+    font-family: Arial;
+}
+
+#pro-code-p {
+    letter-spacing: 0px;
+    font-size: 12pt;
+    font-family: Arial;
+}
+
+#pro-code-span {
+    letter-spacing: 0px;
+    font-size: 12pt;
+    margin-top: -10pt;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+#pro-cart-a {
+    border-radius: 5px;
+    border: hidden;
+}
+
+#pro-pic-5 {
+    float: right;
+    margin-top: 15px;
+    margin-left: -15px;
+}
+
+.pro-pic-4 {
+    border-radius: 5px;
+    margin-left: 5px;
+    width: 32%;
+    height: 85px;
+    margin-bottom: 5px;
+}
+
+.pro-imagemain-4 {
+    border-radius: 5px;
+    margin-left: 5px;
+    width: 32%;
+    height: 85px;
+}
+
+#product-li-a1 {
+    color: #000000;
+    font-size: 12pt;
+}
+
+#specifications {
+    letter-spacing: 1px;
+    font-size: 14pt;
+    color: #000000;
+    font-weight: bold;
+    font-family: Montserrat;
+}
+
+.pro-user {
+    font-size: 44pt;
+    float: left;
+    margin-right: 20px;
+}
+
+.pro-user-p {
+    font-size: 12pt;
+    font-weight: bold;
+    /*text-transform: uppercase;*/
+}
+
+.pro-i {
+    color: #FD4;
+    font-size: 12pt;
+}
+
+.pro-ii {
+    font-size: 12pt;
+}
+
+#pro-other-h3 {
+    letter-spacing: 0px;
+    font-size: 14pt;
+    font-family: Montserrat;
+}
+
+div.stars {
+    width: 250px;
+    display: inline-block;
+}
+
+input.star {
+    display: none;
+}
+
+label.star {
+    float: right;
+    padding: 10px;
+    font-size: 30px;
+    color: #444;
+    transition: all .2s;
+}
+
+input.star:checked ~ label.star:before {
+    content: '\f005';
+    color: #FD4;
+    transition: all .25s;
+}
+
+input.star-5:checked ~ label.star:before {
+    color: #FE7;
+    text-shadow: 0 0 20px #952;
+}
+
+input.star-1:checked ~ label.star:before {
+    color: #F62;
+}
+
+input.star-2:checked ~ label.star:before {
+    color: #F94;
+}
+
+input.star-3:checked ~ label.star:before {
+    color: #FA4;
+}
+
+label.star:hover {
+    transform: rotate(10deg) scale(1.3);
+}
+
+label.star:before {
+    content: '\f006';
+    font-family: FontAwesome;
+}
+
+.guiBinhLuan {
+    box-sizing: border-box;
+    border: 0px solid #cccccc;
+    border-radius: 5px;
+}
+
+#inpBinhLuan {
+    box-sizing: border-box;
+    border: none;
+    display: block;
+    font-size: 16px;
+    width: 100%;
+    padding: 15px 15px;
+}
+
+#btnBinhLuan {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    padding: 10px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#btnBinhLuan:hover {
+    background-color: #4CBF50;
+}
+
+.comment-content {
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+.rating {
+    margin: 20px auto;
+    width: 100%;
+    text-align: center;
+}
+
+.rating .fa-star,
+.rating .fa-star-o {
+    color: #FD4;
+    font-size: 24px;
+}
+
+.comment-area {
+    float: none;
+    width: 100%;
+}
+
+.comment-area h2 {
+    margin: 10px 0 10px 10px;
+}
+
+/* Chat comment */
+.comment {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.comment::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.comment p {
+    /*loat: left;*/
+    margin-right: 20px;
+}
+
+.comment p i.fa-star {
+    color: #FD4;
+}
+
+#footer-h {
+    font-size: 24pt;
+    color: red;
+    font-weight: bold;
+    font-family: Baloo Bhai;
+}
+
+.footer-infor-p {
+    font-size: 14pt;
+    color: #ffffff;
+    font-family: Myriad Pro;
+}
+
+.footer-span {
+    color: #ffffff;
+    font-size: 15pt;
+}
+
+.footer-p-a {
+    color: white;
+    text-decoration: none;
+    font-size: 11pt;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer-p-a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-p {
+    color: white;
+    font-size: 11pt;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer-pt {
+    color: white;
+    font-weight: bold;
+    font-size: 12pt;
+    font-family: Montserrat;
+}
+
+.header-logo {
+    font-size: 28pt;
+    font-weight: bold;
+    font-family: Baloo Bhai;
+}
+
+.header-icons {
+    color: #ffffff;
+}
+
+.btnfb {
+    padding: 7px 20px 10px 20px;
+    border-radius: 5px;
+    border: hidden;
+    transition: .2s;
+}
+
+#fb {
+    margin-right: 10px;
+}

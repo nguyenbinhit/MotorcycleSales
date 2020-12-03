@@ -1,0 +1,184 @@
+﻿@model Models.EF.User
+
+@{
+    ViewBag.Title = "Thông tin cá nhân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+    <script>
+        $('#btnSelectImg').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImg').val(url);
+            };
+            finder.popup();
+        })
+    </script>
+}
+
+
+
+<!--Title-->
+<div class="bg-1" style="background-color: #fdf5e6;">
+    <div class="container" style="padding: 50px 0px 20px 0px">
+        <div class="row">
+            <h3 class="text-center user-title" style="color: red;"> THÔNG TIN TÀI KHOẢN </h3>
+            <p class="user-p-img">
+                <img src="~/Assets/Client/images/moto/di.png" alt="crossbar">
+            </p>
+        </div>
+    </div>
+</div>
+
+<!--customer account information-->
+<div class="bg-1" style="background-color: #ffffff;">
+    <div class="container" style="width: 1400px">
+        <!--Menu-->
+        <div class="col-sm-2 fixside well user-2">
+            <!--hello user-->
+            <div class="well text-center" style="background-color: #ffffff;">
+                <p class="user-hello-p1" style="color: #337ab7;">Xin chào !!!</p>
+                @if (Model.thunbar != null)
+                {
+                    <img src="@Model.thunbar" class="img-circle" height="70" width="75" alt="Avatar">
+                }
+                @{
+                    var session = (WebXe.Common.UserLogin)Session[WebXe.Common.CommonConstants.USER_SESSION];
+                }
+                <p class="user-hello-p2" style="color: #337ab7;">@session.UserName</p>
+            </div>
+
+            <!--Personal information-->
+            <div class="well text-center" style="background-color: #ffffff;">
+                <a href="/khach-hang/@session.UserID">
+                    <span class="glyphicon glyphicon-user user-span"></span>
+                    <p class="user-p">Thông tin cá nhân</p>
+                </a>
+            </div>
+
+            <!--your order-->
+            <div class="well text-center" style="background-color: #ffffff;">
+                <a href="/don-hang/@session.UserID">
+                    <span class="glyphicon glyphicon-shopping-cart user-span"></span>
+                    <p class="user-p">Đơn hàng của bạn</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-9 bor user-9" >
+            <section class="box-main1">
+                <h3 class="title-main user-order-h3" >
+                    <a href="#" style="font-size: 16pt;"> Thông tin cá nhân </a>
+                </h3>
+                @using (Html.BeginForm("Edit", "UserClient", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.id)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(model => model.password, new { @class = "form-control width-dk" })
+                                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.displayname, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.displayname, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.displayname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.thunbar, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.thunbar, new { htmlAttributes = new { @class = "form-control", id = "txtImg" } })
+                                <a id="btnSelectImg" href="#" class="btn btn-sm btn-img">Chọn hình ảnh</a>
+                                @Html.ValidationMessageFor(model => model.thunbar, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-9 text-center">
+                                <input type="submit" value="Lưu thông tin" class="btn btn-success" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .btn-success {
+        padding: 4px 10px;
+        background-color: #5cb85c;
+        border: 0px;
+        border-radius: 10px;
+        transition: .2s;
+        height: 35px;
+        font-size: 12pt;
+        width: 250px;
+    }
+
+    .btn-success:hover {
+        border: 0px solid #333;
+        background-color: #449d44;
+        border-color: #4cae4c;
+    }
+
+    .btn-img {
+        padding: 2px 10px;
+        background-color: #ff6666;
+        border: 0px;
+        border-radius: 5px;
+        transition: .2s;
+        height: 30px;
+        font-size: 12pt;
+    }
+
+    .btn-img:hover {
+        border: 0px solid #333;
+        background-color: #ff0000;
+        border-color: #ff0000;
+    }
+</style>

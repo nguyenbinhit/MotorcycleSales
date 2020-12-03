@@ -1,0 +1,154 @@
+﻿
+@{
+    ViewBag.Title = "Thông tin Admin";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model Models.EF.Account
+
+<div class="row user-profile">
+    <div class="col-lg-4 side-left d-flex align-items-stretch">
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body avatar">
+                        <h4 class="card-title">Tài khoản</h4>
+                        <img src="@Model.thunbar" alt="admin">
+                        <p class="name">@Model.displayname</p>
+                        <p class="designation">- @Model.type_account -</p>
+                        <a class="d-block text-center text-dark" href="#">@Model.email</a>
+                        <a class="d-block text-center text-dark" href="#">@Model.phone</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 stretch-card">
+                <div class="card">
+                    <div class="card-body overview">
+                        <div class="wrapper about-user">
+                            <h4 class="card-title mt-4 mb-3">Khác</h4>
+                        </div>
+                        <div class="info-links">
+                            <p class="website">
+                                Ngày tạo tài khoản:
+                                <br />
+                                <i class="mdi mdi-clock text-gray"></i>
+                                <span>@Model.date_created</span>
+                            </p>
+                            <p class="social-link">
+                                Ngày cập nhật lần cuối:
+                                <br />
+                                <i class="mdi mdi-clock-alert text-gray"></i>
+                                <span>@Model.date_update</span>
+                            </p>
+                            <br />
+                            <p>
+                                @Html.ActionLink("Cập nhật thông tin", "Edit", new { id = Model.id }, new { @class = "btn btn-success mr-5" })
+                                <hr />
+                                @Html.ActionLink("Quay lại", "Index")
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 side-right stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="wrapper d-block d-sm-flex align-items-center justify-content-between">
+                    <h4 class="card-title mb-0"></h4>
+                    <ul class="nav nav-tabs tab-solid tab-solid-primary mb-0" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-expanded="true">Thông tin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="avatar-tab" data-toggle="tab" href="#avatar" role="tab" aria-controls="avatar">Hình ảnh</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="wrapper">
+                    <hr>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.id)
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                        @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.displayname, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.displayname, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                        @Html.ValidationMessageFor(model => model.displayname, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                        @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                        @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.type_account, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.type_account, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                        @Html.ValidationMessageFor(model => model.type_account, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <!-- tab content ends -->
+                        <div class="tab-pane fade" id="avatar" role="tabpanel" aria-labelledby="avatar-tab">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.id)
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.thunbar, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <img src="@Html.DisplayTextFor(model => model.thunbar) " />
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Models.EF.Contact
+
+
+<!--Contact-->
+<div class="bg-1" style="background-color: #fdf5e6;">
+    <div class="container" style="padding: 80px 0px 40px 0px;">
+        <div class="row text-center">
+            <h3 class="contact-h3 text-center" style="color: red;"> LIÊN HỆ MOTORCYCLE </h3>
+            <p> <img src="~/Assets/Client/images/moto/di.png" /></p>
+        </div>
+    </div>
+</div>
+
+<!--contact information-->
+<div class="bg-1 dual" style="padding: 0px 80px">
+    <div class="container contact-container">
+        <h3 class="contact-infor-h3" style="color: black;">
+            MOTORCYCLE tại Việt Nam
+            <br />
+            Hỗ trợ mua trả góp với thủ tục đơn giản, bán hàng toàn quốc
+            <br />
+            Tư vấn nhanh: 0334.679.170 - 0948.563.263
+        </h3>
+        <p>
+            <em>
+                <span class="contact-info-span" style="color:#ff6600;">
+                    Chúng tôi là đại lý ở Việt Nam được Honda Roma Italia chọn làm đơn vị phân phối. Với mục tiêu cung cấp cho thị trường Việt Nam những sản phẩm moto phân khối lớn uy tín và chất lượng, giá thành cạnh tranh.
+                </span>
+            </em>
+        </p>
+        <br />
+        <!--From Contact-->
+        @using (Html.BeginForm("Create", "ContactClient", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal" style="margin-left: 15px;line-height: 1.6">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Họ tên khách hàng *" } })
+                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Địa chỉ email/gmail *" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Số điện thoại * " } })
+                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.TextAreaFor(model => model.note, new { @class = "form-control width-lh", @rows = "5", @placeholder = "Vui lòng nhập nội dung" })
+                    @Html.ValidationMessageFor(model => model.note, "", new { @class = "text-danger" })
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Gửi liên hệ" class="btnn btn-danger border-r mr-2" />
+                </div>
+            </div>
+        }
+    </div>
+    <!--List new news-->
+    <div class="container list-news">
+        <h2 class="contact-new-h2" style="color:#000000;">Tin tức mới nhất</h2>
+        <div class="contact-newd"></div>
+        <br />
+        <ul>
+            @foreach (var item in ViewBag.New)
+            {
+                <li class="contact-new-li">
+                    <p class="contact-new-p">
+                        <a href="#" class="contact-new-a" style="color: #000000;">
+                            @item.name
+                        </a>
+                    </p>
+                    <small><i class="fa fa-clock-o"></i> @item.date_created</small>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
